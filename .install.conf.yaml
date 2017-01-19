@@ -9,6 +9,7 @@
     ~/.agignore:
     #~/.aria2/aria2.conf:
     #~/.axelrc:
+    ~/.bashrc:
     ~/.dotfiles: ''
     #~/.emacs.d:
     #~/.emacs:
@@ -19,6 +20,7 @@
     #~/.hgrc:
     ~/.inputrc:
     #~/.rtorrent.rc:
+    ~/.profile:
     ~/.screenrc:
     ~/.tmux.conf:
     ~/.vim:
