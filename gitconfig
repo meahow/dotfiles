@@ -55,6 +55,29 @@
 	tar = ! "tar() { git archive --format tar --prefix=\"${PWD##*/}/\" HEAD -o ${1}; }; tar"
 	targz = ! "targz() { git archive --format tar.gz --prefix=\"${PWD##*/}/\" HEAD -o ${1}; }; targz"
 	zip = ! "zip() { git archive --format zip --prefix=\"${PWD##*/}/\" HEAD -o ${1}; }; zip"
+	# my old aliases
+    changes=diff --name-status -r
+    st = status
+    d = difftool
+    di = difftool
+    dic = diff
+    ci = commit -v
+    cia = commit -v -a
+    co = checkout
+    cp = cherry-pick
+    l = log
+    ll = log -p
+    lt = log trunk..
+    llt = log -p trunk..
+    lm = log master..
+    llm = log -p master..
+    b = branch
+    hist = log --graph  --oneline --all --decorate=full
+    #stash-unapply = !git stash show -p | git apply -R
+    svnup = svn rebase
+    svnre = svn rebase -l
+    svnci = svn dcommit --no-rebase
+    svncire = svn dcommit
 
 [diff]
 	mnemonicPrefix = true
@@ -62,7 +85,26 @@
 	compactionHeuristic = true
 
 [color]
-	ui = auto
+    diff = auto
+    status = auto
+    branch = auto
+    ui = true
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
 
 [color "grep"]
 	match = cyan bold
@@ -88,6 +130,9 @@
 [mergetool]
 	keepBackup = false
 
+[difftool]
+   prompt = no
+
 [push]
 	default = upstream
 
@@ -98,10 +143,12 @@
 	lineNumber = true
 
 [advice]
-	detachedHead = false
+#	detachedHead = false
 
 [core]
 	excludesfile = ~/.gitignore_global
+#    pager = "less -RciqMSj5"
+    editor = vim
 
 # Allow local customizations in the .gitconfig_local file
 [include]
