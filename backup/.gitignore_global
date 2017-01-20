@@ -1,0 +1,6 @@
+/doxygen_doc/
+/.idea/*
+*.swp
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake

@@ -1,0 +1,63 @@
+[core]
+#    pager = "less -RciqMSj5"
+    editor = vim
+	excludesfile = ~/.gitignore_global
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    ui = true
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[alias]
+    changes=diff --name-status -r
+    st = status
+    d = difftool
+    di = difftool
+    dic = diff
+    ci = commit -v
+    cia = commit -v -a
+    co = checkout
+    cp = cherry-pick
+    l = log
+    ll = log -p
+    lt = log trunk..
+    llt = log -p trunk..
+    lm = log master..
+    llm = log -p master..
+    b = branch
+    hist = log --graph  --oneline --all --decorate=full
+    #stash-unapply = !git stash show -p | git apply -R
+    svnup = svn rebase
+    svnre = svn rebase -l
+    svnci = svn dcommit --no-rebase
+    svncire = svn dcommit
+
+[merge]
+#	tool = diffuse
+        tool = vimdiff
+[gui]
+	spellingdictionary = none
+	fontdiff = -family fixed -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	fontui = -family helvetica -size 8 -weight bold -slant roman -underline 0 -overstrike 0
+[difftool]
+   prompt = no
+
+[push]
+	default = simple
