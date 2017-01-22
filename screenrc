@@ -1,5 +1,19 @@
+#change default scrollback history
+defscrollback 10000
+
+# Fix the one real annoyance with screen... that scrollback in Putty doesn't work. 
+termcapinfo xterm ti@:te@
+
+caption string "%?%F%{= Bk}%? %C%A %D %d-%m-%Y %{= kB} %t%= %?%F%{= Bk}%:%{= wk}%? %n "
+hardstatus on
 hardstatus alwayslastline
+#hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+#hardstatus string "%{.bW}%-w%{.rW}%f%n %t%{-}%+w %=%{..G}[%H %l] %{..Y} %m/%d %c "
 hardstatus string '%{= g}[ %H %{= g}][ %= %{= w}%-w%{= b}%n*%t%{= w}%+w %= %{= g}][ %m-%d %c %{= g}]'
-defscrollback 1000
-startup_message off
-term screen-256color
+#startup_message off #??
+term screen-256color #??
+
+bufferfile /home/michalp/screen-buffer
+
+# don't block on network error
+nonblock 5

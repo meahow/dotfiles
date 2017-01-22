@@ -10,6 +10,7 @@
     #~/.aria2/aria2.conf:
     #~/.axelrc:
     ~/.bashrc:
+    ~/.bash.d:
     ~/.dotfiles: ''
     #~/.emacs.d:
     #~/.emacs:

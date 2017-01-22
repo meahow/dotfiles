@@ -6,7 +6,9 @@
 *.exe
 *.o
 *.so
-*.pyc
+*.pyo
+CMakeCache.txt
+CMakeFiles
 
 # Editing tools and IDEs #
 ##########################
