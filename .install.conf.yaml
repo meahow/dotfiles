@@ -23,6 +23,7 @@
     #~/.rtorrent.rc:
     ~/.profile:
     ~/.screenrc:
+    ~/.ssh/known_hosts: ssh/known_hosts
     ~/.tmux.conf:
     ~/.vim:
     ~/.vimrc:
