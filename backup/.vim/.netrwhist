@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/etc/udev/rules.d'
-let g:netrw_dirhist_2='/etc/udev'
-let g:netrw_dirhist_3='/etc/udev/hwdb.d'
-let g:netrw_dirhist_4='/etc/udev'
-let g:netrw_dirhist_5='/home/mips/src/PRE06/playground/recipes/dev/src/system/tsd-rsi-server/1/workspace/tsd.rsi.server'
-let g:netrw_dirhist_6='/usr/local/lib/python2.7/dist-packages/gcovr-3.3.dist-info'
-let g:netrw_dirhist_7='/home/mips/src/PRE06/poor-branch-coverage/frequencytable/tsd-recipes-mib3/dev/build/radio/tsd-radio-core-frequencytable-unittests/1/workspace/gcovr-html'

@@ -25,6 +25,7 @@ augroup END
 " set t_Co=256
 if has('gui_running')
     colorscheme desert " was solarized
+    set guifont=DejaVu\ Sans\ Mono\ 12
 elseif &t_Co < 256
     colorscheme default
     set nocursorline " looks bad in this mode
@@ -48,12 +49,15 @@ else
 endif
 
 filetype plugin indent on " enable file type detection
+
+" indentation
 set autoindent
+set smartindent
 
 "---------------------
 " Basic editing config
 "---------------------
-set nu " number lines
+set number                  " show line numbers
 set rnu " relative line numbering
 set incsearch " incremental search (as string is being typed)
 set hls " highlight search
@@ -62,25 +66,30 @@ set lbr " line break
 set ruler " show current position in file
 set scrolloff=5 " show lines above and below cursor (when possible)
 set noshowmode " hide mode
-set laststatus=2
+set laststatus=2 " always show status line
 set backspace=indent,eol,start " allow backspacing over everything
 set timeout timeoutlen=1000 ttimeoutlen=100 " fix slow O inserts
 set autochdir " automatically set current directory to directory of last opened file
 set hidden " allow auto-hiding of edited buffers
 set history=8192 " more history
 set nojoinspaces " suppress inserting two spaces between sentences
+set hlsearch                " highlight search match in file
+set nowrapscan              " don't wrap on search
+set wrap                    " wrap too long line
+set linebreak               " wrap lines at words not characters
+set autowrite               " automatically write files when several changing buffers commands are invoked
 " use 4 spaces instead of tabs during formatting
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set expandtab               " place spaces instead of tabs
+set tabstop=4               " tabs width, how many spaces is inserted instead of Tab 
+set shiftwidth=4            " indent width, Number of spaces to use for each step of (auto)indent. Used for <<, >>  etc.
+set softtabstop=4           " soft tabs width, how many spaces is inserted instead of Tab 
 " smart case-sensitive search
 set ignorecase
 set smartcase
 " tab completion for files/bufferss
 set wildmode=longest,list
 set wildmenu
-set mouse+=a " enable mouse mode (scrolling, selection, etc)
+"set mouse+=a " enable mouse mode (scrolling, selection, etc)
 if &term =~ '^screen'
     " tmux knows the extended mouse mode
     set ttymouse=xterm2
@@ -92,6 +101,19 @@ endif
 
 " set leader to ','
 let mapleader = ','
+
+" Press space to clear search highlighting and any message already displayed.
+nnoremap <silent> <Space> :silent noh<Bar>echo<CR>
+
+" If you like "Y" to work from the cursor to the end of line (which is more logical, but not Vi-compatible) use:
+:map Y y$
+
+" tags
+:se tags+=$MYSB/.tags/tags.ctags
+
+" display the current mode and partially-typed commands in the status line:
+set showmode
+set showcmd
 
 " open new split panes to right and bottom, which feels more natural
 set splitbelow
