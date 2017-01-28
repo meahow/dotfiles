@@ -54,6 +54,12 @@ set -o vi
 #unlimit core size
 ulimit -c unlimited
 
+shopt -s autocd     # allows `cd **/qux` to enter `./foo/bar/baz/qux`
+shopt -s cdspell    # auto-correct typos in path names when using `cd`
+shopt -s dotglob    # include filenames beginning with a `.` in the results of filename expansion
+shopt -s globstar   # pattern `**` used in a file name expansion context will match all files and zero or more directories and subdirectories
+shopt -s nocaseglob # case-insensitive globbing
+
 # fancy colors 
 if [[ -e ~/.bash_colors ]]; then
     source ~/.bash_colors
