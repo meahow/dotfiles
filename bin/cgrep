@@ -1,0 +1,118 @@
+#!/usr/bin/perl -w
+
+use Getopt::Long;
+
+# defaults
+$before = -1;
+@BEFORE = ();
+$after = -1;
+$remaining = 0;
+$context = 1;
+$search = "";
+$params = "";
+$insensitive = 0;
+$vt100 = 1;
+$bold = "\x1b[1m";
+$normal = "\x1b[0m";
+$help = 0;
+$return = 1;
+$line = "--\n";
+$separator = 0;
+
+sub help {
+    $usage = <<EOF;
+usage: $0 [options] search-regexp [files]
+cgrep acts like grep to search for regular expressions in specified files
+and display matched lines.
+
+Although it does not have all the features of standard Solaris grep, it has
+one feature no available in the stock version - it can display lines occuring
+before and after the matched line to provide context.
+
+If no files are specified, the program reads from standard input.
+
+Options:
+\t[-b NUM, --before NUM] print NUM lines from file before matched line
+\t[-a NUM, --after NUM] print NUM lines from file after matched line
+\t[-c NUM, --context NUM] print NUM lines from file before and after matched line
+\t defaults to 1
+\t[-i, --[no]insensitive] case-insensitive (or sensitive) search
+\t defaults to case-sensitive
+\t[-v, -nov, --[no]vt100] highlight (or not) matched lines with vt100 sequences
+\t defaults to highlighting
+\t[-s, --[no]separator] put separator between matched lines and context
+\t defaults to no separator
+\t[-h, --help] print this message
+EOF
+
+    print "$usage\n";
+    exit 2;
+}
+
+%options = (
+	 "before" => \$before,
+	 "after" => \$after,
+	 "context" => \$context,
+	 "insensitive" => \$insensitive,
+	 "vt100" => \$vt100,
+	 "separator" => \$separator,
+	 "help" => \$help
+);
+
+GetOptions(\%options,
+	   "before=i",
+	   "after=i",
+	   "context=i",
+	   "insensitive!",
+	   "vt100!",
+	   "separator!",
+	   "help!"
+	   );
+
+help if ($help);
+
+die "No search regular expression entered.\n" if ($#ARGV < 0);
+
+$before = $context if ($before == -1);
+$after = $context if ($after == -1);
+
+$bold = "" if not $vt100;
+$normal = "" if not $vt100;
+
+$line = "" if not $separator;
+
+$params .= "i" if ($insensitive);
+$search = shift(@ARGV);
+
+$test="/$search/o$params";
+
+while (<>) {
+    shift (@BEFORE) if ($#BEFORE == $before);
+    if (eval($test)) {
+	$return = 0;
+	print $line, @BEFORE;
+	print "$bold$_$normal";
+	@BEFORE = ();
+	$remaining = $after;
+    } elsif ($remaining > 0) {
+	$remaining--;
+	print;
+    } else {
+	push (@BEFORE, $_) if ($before > 0);
+    }
+}
+
+exit $return;
+
+
+##############################################################################
+### This script is submitted to BigAdmin by a user of the BigAdmin community.
+### Sun Microsystems, Inc. is not responsible for the
+### contents or the code enclosed. 
+###
+###
+### Copyright 2008 Sun Microsystems, Inc. ALL RIGHTS RESERVED
+### Use of this software is authorized pursuant to the
+### terms of the license found at
+### http://www.sun.com/bigadmin/common/berkeley_license.html
+##############################################################################
