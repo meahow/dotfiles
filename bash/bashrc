@@ -61,8 +61,8 @@ shopt -s globstar   # pattern `**` used in a file name expansion context will ma
 shopt -s nocaseglob # case-insensitive globbing
 
 # fancy colors 
-if [[ -e ~/.bash_colors ]]; then
-    source ~/.bash_colors
+if [[ -e ~/.bash.d/colors ]]; then
+    source ~/.bash.d/colors
     #export PS1="\[$txtgrn\]\t\[$txtrst\]@\[$txtblu\]\h\[$txtylw\] \w \$\[$txtrst\] "
     export PS1="\[$txtgrn\]\d \t\[$txtrst\]@\[$txtblu\]\h\[$txtrst\]\[$txtylw\] \w\n\$\[$txtrst\] "
 fi

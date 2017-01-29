@@ -20,6 +20,7 @@
     ~/.screenrc:
     ~/.ssh/known_hosts: ssh/known_hosts
     ~/.tmux.conf:
+    ~/.toprc:
     ~/.vim:
     ~/.vimrc:
     ~/.zsh:
