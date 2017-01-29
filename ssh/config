@@ -1,0 +1,6 @@
+NoHostAuthenticationForLocalhost yes
+
+#K3 w labie w SW ATL
+#Host k3
+#HostName 172.16.37.126
+#User root
