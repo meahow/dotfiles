@@ -21,7 +21,6 @@
     #~/.rtorrent.rc:
     ~/.profile:
     ~/.screenrc:
-    ~/.ssh/known_hosts: ssh/known_hosts
     ~/.ssh/config: ssh/config
     ~/.tmux.conf:
     ~/.toprc:
