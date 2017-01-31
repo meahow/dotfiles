@@ -3,7 +3,7 @@
 # for examples
 
 # Source global definitions
-if [ -e ~/.bash.d/bashrc_default ]
+if [[ -e ~/.bash.d/bashrc_default ]]
 then
     . ~/.bash.d/bashrc_default
 else
@@ -13,40 +13,11 @@ fi
 
 ###### wtręt
 # replace bash with screen instance
-#if [[ $TERM != "screen" && $HOSTNAME != "atl-srv-sw14" ]]
-#if [[ $TERM != "screen" ]]
-#then
-#    exec screen -dR
-#fi
+if [[ $TERM != "screen" && $HOSTNAME == "atl-srv-sw14" ]]
+then
+   echo "would be executing: exec screen -dR"
+fi
 
-#if [ "$HOSTNAME" == "atl-srv-sw14" ] ;
-#then 
-#    tmux
-#fi
-
-#################################################
-##               VARIABLES                     ##
-#################################################
-export HISTCONTROL=ignoreboth       # don't store duplicates nor empty commands in bash history
-export HISTTIMEFORMAT="%c "         # show timestamp in bash history
-export HISTSIZE=2000                # size of the history list in the shell
-export HISTFILESIZE=200000          # size of the history file
-shopt -s histappend                 # append history from the shell to the history on exit
-export LESS="-i -S -M -r" # less default options -i ignores case, -S chops long lines, -F quits if only one page -M more verbose prompt (percentage), -r raw colors
-export PAGER="/usr/bin/less $LESS" # default pager
-export EDITOR=vim
-# the PATH
-export PATH=/usr/local/bin:/etc:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11R6/bin:/opt/eldk-4.1/bin:/opt/kde3/bin:/opt/mipsel.tools/bin:.
-export PATH=~/bin:./:~/usr/bin:$PATH
-# old PS1
-export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \W \$\[\033[00m\] '
-
-
-
-
-#################################################
-##               OPTIONS                       ##
-#################################################
 
 # set vi-like key bindings
 set -o vi
@@ -59,86 +30,14 @@ shopt -s cdspell    # auto-correct typos in path names when using `cd`
 shopt -s dotglob    # include filenames beginning with a `.` in the results of filename expansion
 shopt -s globstar   # pattern `**` used in a file name expansion context will match all files and zero or more directories and subdirectories
 shopt -s nocaseglob # case-insensitive globbing
-
-# fancy colors 
-if [[ -e ~/.bash.d/colors ]]; then
-    source ~/.bash.d/colors
-    #export PS1="\[$txtgrn\]\t\[$txtrst\]@\[$txtblu\]\h\[$txtylw\] \w \$\[$txtrst\] "
-    export PS1="\[$txtgrn\]\d \t\[$txtrst\]@\[$txtblu\]\h\[$txtrst\]\[$txtylw\] \w\n\$\[$txtrst\] "
-fi
-
-if [ -f /etc/bash_completion ]
-then
-   source /etc/bash_completion
-fi
+shopt -s histappend # append history from the shell to the history on exit
 
 
-
-#################################################
-##       ALIASES AND FUNCTIONS                 ##
-#################################################
-
-alias startvnc="vncserver :4 -geometry 1650x930"
-alias ls="ls -hF --color=always"
-alias ll="ls -la"
-alias rm='rm -i'
-alias gitka="gitk --all"
-alias abspath="readlink -f"
-alias grep='grep --color=always'
-alias scr="screen -dR"
-alias rmcore='rm -f *core*'
-alias relogin="exec bash -l"
-alias mk="make"
-alias mkc='mk clean'
-alias mkf='mk -j5'
-alias mkff='mk -j10'
-
-alias gcovr-preh='gcovr --object-directory=$PWD --exclude=.*\(buildenv\|\/test\/\|\/test_doubles\/\|\/include\/\).* -b --exclude-unreachable-branches --html --html-details -o gcovr-html/coverage.html -v -k'
-
-# search for specified process name and display its details
-function psg ()
-{
-    if e=`pgrep $*`;
-    then 
-        ps -Fp $e;
-    else
-        echo "no matches";
-    fi;
-}
-
-# search for specified process name owned by me and display its details
-function mpsg ()
-{
-    if e=`pgrep $*`;
-    then
-        me=`id -nu`;
-        ps -fp`pgrep -U $me $*`;
-    else
-        echo "no matches";
-    fi;
-}
-
-#Removes shared memory keys
-function shmclean()
-{
-   for i in `ipcs | grep $USER | cut -f1 -d' '`
-   do
-      ipcrm -M $i
-      ipcrm -S $i
-   done
-}
-
-###### moved to /home/michalp/tools/ctagsgen.sh ###########
-##generate ctags for cserver
-#function ctagsgen()
-#{
-#   rm -f ~/.vim/tags/cscope.files
-#   for path in $*;
-#   do
-#       find $path \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' -o -name '*.hh' -o -name '*.ext' \) -print >> ~/.vim/tags/cscope.files
-#   done;
-#   ctags -L ~/.vim/tags/cscope.files -a --c-kinds=+p --fields=+iaS --extra=+q --tag-relative=yes -f ~/.vim/tags/tags.ctags
-#}
-###########################################################
-
-###### #koniec wtręt
+# source all separate files
+for file in env aliases functions colors prompt
+do
+  if [[ -f ~/.bash.d/$file ]]
+  then
+      . ~/.bash.d/$file
+  fi
+done

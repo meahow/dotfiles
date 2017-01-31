@@ -1,0 +1,20 @@
+# vi: set ft=sh :
+alias startvnc="vncserver :4 -geometry 1650x930"
+alias ls="ls -hF --color=always"
+alias ll="ls -la"
+alias lll="ls -la"
+alias rm='rm -i'
+alias gitka="gitk --all"
+alias abspath="readlink -f"
+alias grep='grep --color=always'
+alias scr="screen -dR"
+alias rmcore='rm -f *core*'
+alias relogin="exec bash -l"
+alias mk="make"
+alias mkc='mk clean'
+alias mkf='mk -j5'
+alias mkff='mk -j10'
+alias mkt='mk tests'
+alias mktr='mk tests.run'
+
+alias gcovr-preh='gcovr --object-directory=$PWD --exclude=.*\(buildenv\|\/test\/\|\/test_doubles\/\|\/include\/\).* -b --exclude-unreachable-branches --html --html-details -o gcovr-html/coverage.html -v -k'

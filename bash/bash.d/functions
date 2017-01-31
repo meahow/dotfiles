@@ -1,0 +1,33 @@
+# vi: set ft=sh :
+# search for specified process name and display its details
+function psg ()
+{
+    if e=`pgrep $*`;
+    then
+        ps -Fp $e;
+    else
+        echo "no matches";
+    fi;
+}
+
+# search for specified process name owned by me and display its details
+function mpsg ()
+{
+    if e=`pgrep $*`;
+    then
+        me=`id -nu`;
+        ps -fp`pgrep -U $me $*`;
+    else
+        echo "no matches";
+    fi;
+}
+
+#Removes shared memory keys
+function shmclean()
+{
+   for i in `ipcs | grep $USER | cut -f1 -d' '`
+   do
+      ipcrm -M $i
+      ipcrm -S $i
+   done
+}

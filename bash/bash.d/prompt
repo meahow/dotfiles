@@ -1,0 +1,8 @@
+# vi: set ft=sh :
+PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \W \$\[\033[00m\] '
+# if colors file was sourced we can use it here
+if [[ "$txtblk" != "" ]]; then
+    #PS1="\[$txtgrn\]\t\[$txtrst\]@\[$txtblu\]\h\[$txtylw\] \w \$\[$txtrst\] "
+    PS1="\[$txtgrn\]\d \t\[$txtrst\]@\[$txtblu\]\h\[$txtrst\]\[$txtylw\] \w\n\$\[$txtrst\] "
+fi
+export PS1
