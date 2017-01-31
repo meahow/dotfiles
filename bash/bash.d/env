@@ -6,5 +6,3 @@ export HISTFILESIZE=200000          # size of the history file
 export LESS="-i -S -M -r" # less default options -i ignores case, -S chops long lines, -F quits if only one page -M more verbose prompt (percentage), -r raw colors
 export PAGER="/usr/bin/less $LESS" # default pager
 export EDITOR=vim
-# the PATH
-export PATH=~/bin:.:~/usr/bin:$PATH
