@@ -13,7 +13,7 @@ hardstatus string '%{= g}[ %H %{= g}][ %= %{= w}%-w%{= b}%n*%t%{= w}%+w %= %{= g
 #startup_message off #??
 term screen-256color #??
 
-bufferfile /home/michalp/screen-buffer
+bufferfile ~/screen-buffer
 
 # don't block on network error
 nonblock 5
