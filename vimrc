@@ -51,14 +51,18 @@ endif
 filetype plugin indent on " enable file type detection
 
 " indentation
-set autoindent
-set smartindent
+set autoindent " auto indentation
+set smartindent " c-style code indentation
+set expandtab               " place spaces instead of tabs
+set tabstop=4               " tabs width, how many spaces is inserted instead of Tab 
+set shiftwidth=4            " indent width, Number of spaces to use for each step of (auto)indent. Used for <<, >>  etc.
+set softtabstop=4           " soft tabs width, how many spaces is inserted instead of Tab 
 
 "---------------------
 " Basic editing config
 "---------------------
 set number                  " show line numbers
-set relativenumber " relative line numbering
+set norelativenumber " no relative line numbering
 set incsearch " incremental search (as string is being typed)
 set hlsearch " highlight search matches
 set listchars=tab:>-,nbsp:~ " set list to see tabs and non-breakable spaces TODO: add trail
@@ -70,23 +74,19 @@ set laststatus=2 " always show status line
 set backspace=indent,eol,start " allow backspacing over everything
 set timeout timeoutlen=1000 ttimeoutlen=100 " fix slow O inserts
 set autochdir " automatically set current directory to directory of last opened file
-set hidden " allow auto-hiding of edited buffers
+"set hidden " allow auto-hiding of edited buffers
 set history=8192 " more history
 set nojoinspaces " suppress inserting two spaces between sentences
 set hlsearch                " highlight search match in file
 set nowrapscan              " don't wrap on search
-set wrap                    " wrap too long line
+set wrap                    " wrap to long lines
 set linebreak               " wrap lines at words not characters
 set autowrite               " automatically write files when several changing buffers commands are invoked
-" use 4 spaces instead of tabs during formatting
-set expandtab               " place spaces instead of tabs
-set tabstop=4               " tabs width, how many spaces is inserted instead of Tab 
-set shiftwidth=4            " indent width, Number of spaces to use for each step of (auto)indent. Used for <<, >>  etc.
-set softtabstop=4           " soft tabs width, how many spaces is inserted instead of Tab 
+
 " smart case-sensitive search
 set ignorecase
 set smartcase
-" tab completion for files/bufferss
+" tab completion with menu for commands/files/buffers
 set wildmode=longest,list,full
 set wildmenu
 "set mouse+=a " enable mouse mode (scrolling, selection, etc)
