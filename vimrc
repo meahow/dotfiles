@@ -65,8 +65,7 @@ set number                  " show line numbers
 set norelativenumber " no relative line numbering
 set incsearch " incremental search (as string is being typed)
 set hlsearch " highlight search matches
-set listchars=tab:>-,nbsp:~,trail:◆ " set list to see tabs and non-breakable spaces TODO: add trail
-set list " show chars from listchars TODO:add map for this
+set list listchars=trail:·,tab:»·,nbsp:⍽ " set list to see tabs and non-breakable spaces TODO: add map for this
 set linebreak " break lines on display
 "set ruler " show current position in file - obsolete with powerline
 set scrolloff=5 " show lines above and below cursor (when possible)
