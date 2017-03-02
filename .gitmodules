@@ -78,7 +78,7 @@
 	url = https://github.com/tpope/vim-liquid
 	ignore = untracked
 [submodule "vim/bundle/supertab"]
-	path = vim/bundle/supertab
+	path = vim/bundle/supertab~
 	url = https://github.com/ervandew/supertab
 	ignore = untracked
 [submodule "vim/bundle/editorconfig-vim"]
