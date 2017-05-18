@@ -156,3 +156,6 @@
 [submodule "zsh/zsh-syntax-highlighting"]
 	path = zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "vim/bundle/vim-commentor"]
+	path = vim/bundle/vim-commentor
+	url = https://github.com/manasthakur/vim-commentor.git
