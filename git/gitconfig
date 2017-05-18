@@ -73,6 +73,7 @@
     llm = log -p master..
     b = branch
     hist = log --graph  --oneline --all --decorate=full
+    resup = reset @{u}
     #stash-unapply = !git stash show -p | git apply -R
     svnup = svn rebase
     svnre = svn rebase -l
@@ -153,3 +154,5 @@
 # Allow local customizations in the .gitconfig_local file
 [include]
     path = ~/.gitconfig_local
+[gitreview]
+	remote = origin

@@ -32,6 +32,8 @@ shopt -s globstar   # pattern `**` used in a file name expansion context will ma
 shopt -s nocaseglob # case-insensitive globbing
 shopt -s histappend # append history from the shell to the history on exit
 
+# turn off ^S suspend feature to be able to forward-search bash history
+stty -ixon
 
 # source all separate files
 for file in env aliases functions colors prompt
