@@ -46,7 +46,7 @@
 	url = https://github.com/tpope/vim-haml
 	ignore = untracked
 [submodule "vim/bundle/vim-coffee-script"]
-	path = vim/bundle/vim-coffee-script~
+	path = vim/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script
 	ignore = untracked
 [submodule "vim/bundle/tagbar"]
