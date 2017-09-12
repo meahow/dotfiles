@@ -24,7 +24,7 @@ ctagsgen ()
     cd $1
     for path in $TAG_DIRS
     do
-        find $path \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' -o -name '*.hh' -o -name '*.ext' \) -print >> $FILES_LIST_FILE
+        find $path \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' -o -name '*.hh' -o -name '*.hpp' \) -print >> $FILES_LIST_FILE
     done
     ctags -L $FILES_LIST_FILE -a --c-kinds=+p --fields=+iaS --extra=+q --tag-relative=yes -f $CTAGS_FILE
 

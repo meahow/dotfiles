@@ -155,4 +155,5 @@
 [include]
     path = ~/.gitconfig_local
 [gitreview]
-	remote = origin
+    remote = origin
+    track = True

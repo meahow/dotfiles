@@ -16,5 +16,5 @@ alias mkf='mk -j5'
 alias mkff='mk -j10'
 alias mkt='mk tests'
 alias mktr='mk tests.run'
-alias syncr="rsync --archive --verbose --compress --delete --delete-excluded --exclude '.git'"
+alias syncr="rsync --archive --verbose --compress --delete --delete-excluded --exclude '.git' --exclude '*.swp'"
 alias gcovr-preh='gcovr --object-directory=$PWD --exclude=.*\(buildenv\|\/test\/\|\/test_doubles\/\|\/include\/\).* -b --exclude-unreachable-branches --html --html-details -o gcovr-html/coverage.html -v -k'

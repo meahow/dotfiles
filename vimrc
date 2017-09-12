@@ -115,7 +115,7 @@ nnoremap <silent> <Space> :silent noh<Bar>echo<CR>
 :map Y y$
 
 " tags
-:se tags+=$MYSB/.tags/tags.ctags
+":se tags+=$MYSB/.tags/tags.ctags
 
 " display the current mode and partially-typed commands in the status line:
 set showmode
