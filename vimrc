@@ -150,6 +150,8 @@ nnoremap <Leader>t :TagbarToggle<CR>
 
 " gundo
 nnoremap <Leader>u :GundoToggle<CR>
+" make it wokrk with python3
+let g:gundo_prefer_python3 = 1
 
 " ctrlp
 nnoremap ; :CtrlPBuffer<CR>
