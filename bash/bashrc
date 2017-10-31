@@ -1,45 +1,52 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+#!/usr/bin/env bash
 
-# Source global definitions
-if [[ -e ~/.bash.d/bashrc_default ]]
-then
-    . ~/.bash.d/bashrc_default
-else
-    . /etc/skel/.bashrc
-fi
+# Path to the bash it configuration
+export BASH_IT="/home/mips/.dotfiles/bash-it"
 
+# Lock and Load a custom theme file
+# location /.bash_it/themes/
+export BASH_IT_THEME='bobby'
 
-###### wtręt
-# replace bash with screen instance
-if [[ $TERM != "screen" && $HOSTNAME == "atl-srv-sw14" ]]
-then
-   echo "would be executing: exec screen -dR"
-fi
+# (Advanced): Change this to the name of your remote repo if you
+# cloned bash-it with a remote other than origin such as `bash-it`.
+# export BASH_IT_REMOTE='bash-it'
 
+# Your place for hosting Git repos. I use this for private repos.
+export GIT_HOSTING='git@git.domain.com'
 
-# set vi-like key bindings
-set -o vi
+# Don't check mail when opening terminal.
+unset MAILCHECK
 
-#unlimit core size
-ulimit -c unlimited
+# Change this to your console based IRC client of choice.
+export IRC_CLIENT='irssi'
 
-shopt -s autocd     # allows `cd **/qux` to enter `./foo/bar/baz/qux`
-shopt -s cdspell    # auto-correct typos in path names when using `cd`
-shopt -s dotglob    # include filenames beginning with a `.` in the results of filename expansion
-shopt -s globstar   # pattern `**` used in a file name expansion context will match all files and zero or more directories and subdirectories
-shopt -s nocaseglob # case-insensitive globbing
-shopt -s histappend # append history from the shell to the history on exit
+# Set this to the command you use for todo.txt-cli
+export TODO="t"
 
-# turn off ^S suspend feature to be able to forward-search bash history
-stty -ixon
+# Set this to false to turn off version control status checking within the prompt for all themes
+export SCM_CHECK=true
 
-# source all separate files
-for file in env aliases functions colors prompt
-do
-  if [[ -f ~/.bash.d/$file ]]
-  then
-      . ~/.bash.d/$file
-  fi
-done
+# Set Xterm/screen/Tmux title with only a short hostname.
+# Uncomment this (or set SHORT_HOSTNAME to something else),
+# Will otherwise fall back on $HOSTNAME.
+#export SHORT_HOSTNAME=$(hostname -s)
+
+# Set Xterm/screen/Tmux title with only a short username.
+# Uncomment this (or set SHORT_USER to something else),
+# Will otherwise fall back on $USER.
+#export SHORT_USER=${USER:0:8}
+
+# Set Xterm/screen/Tmux title with shortened command and directory.
+# Uncomment this to set.
+#export SHORT_TERM_LINE=true
+
+# Set vcprompt executable path for scm advance info in prompt (demula theme)
+# https://github.com/djl/vcprompt
+#export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
+
+# (Advanced): Uncomment this to make Bash-it reload itself automatically
+# after enabling or disabling aliases, plugins, and completions.
+# export BASH_IT_AUTOMATIC_RELOAD_AFTER_CONFIG_CHANGE=1
+
+# Load Bash It
+source "$BASH_IT"/bash_it.sh
