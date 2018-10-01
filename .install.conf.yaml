@@ -27,6 +27,7 @@
     ~/.toprc:
     ~/.vim:
     ~/.vimrc:
+    ~/.config/fish/config.fish: fish/config.fish
 
 - shell:
   #- mkdir -p ~/.rtorrent/session ~/.rtorrent/watch ~/.rtorrent/downloads
