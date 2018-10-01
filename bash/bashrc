@@ -42,10 +42,7 @@ shopt -s histappend # append history from the shell to the history on exit
 stty -ixon
 
 # source all separate files
-for file in env aliases functions colors prompt
+for file in ~/.bash.d/*
 do
-  if [[ -f ~/.bash.d/$file ]]
-  then
-      . ~/.bash.d/$file
-  fi
+    . $file
 done
