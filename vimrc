@@ -139,6 +139,8 @@ nnoremap <C-n> :set rnu!<CR>
 
 " save read-only files
 command -nargs=0 Sudow w !sudo tee % >/dev/null
+" another approach from Mastering Vim Quickly #1
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 "---------------------
 " Plugin configuration
