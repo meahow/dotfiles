@@ -94,6 +94,9 @@ if &term =~ '^screen'
     set ttymouse=xterm2
 endif
 
+set undofile " Maintain undo history between sessions
+set undodir=~/.vim/undodir
+
 "--------------------
 " Misc configurations
 "--------------------
